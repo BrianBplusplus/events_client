@@ -8,7 +8,22 @@ class EventsListContainer extends React.Component {
     this.props.loadEvents();
   }
   render() {
-    return <EventsList events={this.props.events} />;
+    console.log(this.props.events);
+    return (
+      <ul>
+        {this.props.events &&
+          this.props.events.map(currentEvent => {
+            return (
+              <EventsList
+                key={currentEvent.id}
+                name={currentEvent.name}
+                date={currentEvent.date}
+                description={currentEvent.description}
+              />
+            );
+          })}
+      </ul>
+    );
   }
 }
 const mapStateToProps = state => ({
